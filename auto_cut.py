@@ -4,9 +4,6 @@ from pyJianYingDraft import Intro_type, Transition_type, trange
 from pyJianYingDraft import TextIntro, TextOutro, Text_loop_anim, Mask_type
 from pyJianYingDraft import animation
 from pyJianYingDraft.script_file import json
-from mcp.server.fastmcp import FastMCP
-
-mcp = FastMCP("FileSystem", port=8003)
 
 class autoCut():
 
@@ -106,6 +103,7 @@ class autoCut():
     def addItem(self) -> str:
         with open(os.path.join(self.output_dir, "json/item.json"), 'r', encoding='utf-8') as f:
             json_data = json.load(f)
+            json_data = json_data['lists']
         for key, item in json_data.items() if isinstance(json_data, dict) else enumerate(json_data):
             # 音频素材
             itemPeiyinNow = self.nowS
@@ -145,9 +143,9 @@ class autoCut():
             self.script.add_segment(StickerSegment, 'STK')
             # 字幕素材
             title = item['shiJuSplit']
-            segments = [segment for segment in title.split('|') if segment]
-            total_length = len(title)
-            list = [[segment, round(len(segment) / total_length, 3)] for segment in segments]
+            # title = '123|456'
+            total_length = sum(len(segment) for segment in title)
+            list = [[segment, round(len(segment) / total_length, 3)] for segment in title]
             splitNum = len(list) - 1
             split = [
                 {
@@ -244,6 +242,3 @@ class autoCut():
             print(f"生成草稿时发生错误: {str(e)}")
             raise
         return 'Success'
-        
-if __name__ == "__main__":
-    mcp.run(transport='sse')

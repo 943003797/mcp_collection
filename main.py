@@ -61,4 +61,5 @@ def auto_cut(draft_path: str) -> str:
     return "Success"
 
 if __name__ == "__main__":
+    # auto_cut('/Volumes/M0/AI/jianyingdraft/JianyingPro Drafts/千古词帝李煜的巅峰之作')
     mcp.run(transport='sse')
