@@ -8,7 +8,24 @@ class FileSystem:
     """
     文件系统操作类
     """
-    
+    @staticmethod
+    def write_file(file_path: str, content: str) -> str:
+        """
+        写入文件内容
+        
+        参数:
+            file_path: 文件路径
+            content: 要写入的内容
+        """
+        # 确保目标文件夹存在
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        # 写入文件内容
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+            
+        return "success"
+        
     @staticmethod
     def copy_dir(from_path: str, to_path: str) -> str:
         """
