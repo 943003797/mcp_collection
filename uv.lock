@@ -206,15 +206,6 @@ wheels = [
 ]
 
 [[package]]
-name = "comtypes"
-version = "1.4.11"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3c/b9/4431119a640f568190499fd76fac4b4ccb5695659c4b3aac570329c150ea/comtypes-1.4.11.zip", hash = "sha256:0a4259370ec48b685fe4483b0944ba1df0aa45163922073fe9b7df1d187db09e", size = 272448 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/f1/f4/7b7fdbb613992013c4518a0bf8fee2915f79ec07bcfa6180569bca7fa8ef/comtypes-1.4.11-py3-none-any.whl", hash = "sha256:1760d5059ca7ca1d61b574c998378d879c271a86c41f88926619ea97497592bb", size = 246365 },
-]
-
-[[package]]
 name = "cryptography"
 version = "45.0.5"
 source = { registry = "https://pypi.org/simple" }
@@ -454,7 +445,7 @@ dependencies = [
 requires-dist = [
     { name = "dashscope", specifier = ">=1.23.9" },
     { name = "mcp", specifier = ">=1.12.0" },
-    { name = "pyjianyingdraft", specifier = ">=0.2.0.1" },
+    { name = "pyjianyingdraft", git = "https://github.com/943003797/pyJianYingDraft.git" },
 ]
 
 [[package]]
@@ -766,16 +757,11 @@ wheels = [
 
 [[package]]
 name = "pyjianyingdraft"
-version = "0.2.0.1"
-source = { registry = "https://pypi.org/simple" }
+version = "0.2.0"
+source = { git = "https://github.com/943003797/pyJianYingDraft.git#0bb04425aa7f966376bd727bcbf5496688474150" }
 dependencies = [
     { name = "imageio" },
     { name = "pymediainfo" },
-    { name = "uiautomation" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/03/75/ca6abcdf589c28fc2314bf4e0a325e568754313aac094e2edbfded1d37fd/pyjianyingdraft-0.2.0.1.tar.gz", hash = "sha256:344f3a1b44f6ea74919f2d7695f5a311a663abdc8c034a330db01749e3403472", size = 231049 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/1f/54/22376c1fa5cb9132a57eaaf22ade338f1eaed1579fb4c9f9273a0539d37c/pyJianYingDraft-0.2.0.1-py3-none-any.whl", hash = "sha256:cded25b2aad220929ded0f386ef61a362830179b57c813a3035dcc6ba786a6b5", size = 234605 },
 ]
 
 [[package]]
@@ -983,18 +969,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f8/b1/0c11f5058406b3af7609f121aaa6b609744687f1d158b3c3a5bf4cc94238/typing_inspection-0.4.1.tar.gz", hash = "sha256:6ae134cc0203c33377d43188d4064e9b357dba58cff3185f22924610e70a9d28", size = 75726 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/17/69/cd203477f944c353c31bade965f880aa1061fd6bf05ded0726ca845b6ff7/typing_inspection-0.4.1-py3-none-any.whl", hash = "sha256:389055682238f53b04f7badcb49b989835495a96700ced5dab2d8feae4b26f51", size = 14552 },
-]
-
-[[package]]
-name = "uiautomation"
-version = "2.0.28"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "comtypes" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/2c/78/c7a631189809fac1552ccad35c31e58b5600d2c8a152a9bd2da3550f2d76/uiautomation-2.0.28.tar.gz", hash = "sha256:472b8f4297e7b0d77acdcef6cdb499aee68b4e6179331593f98afb5e3fce36f9", size = 203963 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/df/cf/d38d1c79aec7bc89a8d4bd694d1917b5f251400fec2f7e31278430be993b/uiautomation-2.0.28-py3-none-any.whl", hash = "sha256:89db27f7d472dc247077906b4805cc375b7d6c28caae91ded858c8beae3973a2", size = 198955 },
 ]
 
 [[package]]
