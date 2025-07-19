@@ -6,7 +6,7 @@ import os
 
 class FileSystem:
     """
-    文件系统操作类
+    文件系统操作类 
     """
     @staticmethod
     def write_file(file_path: str, content: str) -> str:

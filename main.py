@@ -6,6 +6,22 @@ from auto_cut import autoCut
 mcp = FastMCP("mcp_collection", port=8000)
 
 @mcp.tool()
+def write_file(file_path: str, content: str) -> str:
+    """
+    Use this tool to write content to a specified file
+    Parameters:
+        file_path: Target file path
+        content: Content to write
+        
+    Returns:
+        str: Operation result string
+        May raise:
+            FileNotFoundError: When file path does not exist
+            IOError: When write operation fails
+    """
+    return FileSystem.write_file(file_path, content)
+
+@mcp.tool()
 def copy_dir(from_path: str, to_path: str) -> str:
     """
     This tool is used to copy files from one directory to another. A new directory named with current timestamp will be created in the destination path, and all files (excluding subdirectories) from source directory will be copied to it.
