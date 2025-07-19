@@ -3,7 +3,7 @@ from file_system import FileSystem
 from cosyvoice_v1 import Cosyvoice
 from auto_cut import autoCut
 
-mcp = FastMCP("FileSystem", port=8000)
+mcp = FastMCP("mcp_collection", port=8000)
 
 @mcp.tool()
 def copy_dir(from_path: str, to_path: str) -> str:
