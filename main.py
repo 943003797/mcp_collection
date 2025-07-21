@@ -1,7 +1,7 @@
 from mcp.server.fastmcp import FastMCP
-from file_system import FileSystem
-from cosyvoice_v1 import Cosyvoice
-from auto_cut import autoCut
+from module.file_system import FileSystem
+from module.cosyvoice_v1 import Cosyvoice
+from module.auto_cut import autoCut
 
 mcp = FastMCP("mcp_collection", port=8000)
 
