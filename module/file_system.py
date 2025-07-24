@@ -9,6 +9,23 @@ class FileSystem:
     文件系统操作类 
     """
     @staticmethod
+    def read_file(file_path: str) -> str:
+        """
+        读取文件内容
+        
+        参数:
+            file_path: 文件路径
+        """
+        # 检查文件是否存在
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f'文件不存在: {file_path}')
+        
+        # 读取文件内容
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        return content
+    @staticmethod
     def write_file(file_path: str, content: str) -> str:
         """
         写入文件内容
