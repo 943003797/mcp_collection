@@ -6,6 +6,15 @@ from module.auto_cut import autoCut
 mcp = FastMCP("mcp_collection", port=8000)
 
 @mcp.tool()
+def read_file(file_path: str) -> str:
+    """
+    使用这个工具读取文件内容
+    参数:
+        file_path: 文件路径
+    """
+    return FileSystem.read_file(file_path)
+
+@mcp.tool()
 def write_file(file_path: str, content: str) -> str:
     """
     Use this tool to write content to a specified file
