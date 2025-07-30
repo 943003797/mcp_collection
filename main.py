@@ -2,8 +2,29 @@ from mcp.server.fastmcp import FastMCP
 from module.file_system import FileSystem
 from module.cosyvoice_v1 import Cosyvoice
 from module.auto_cut import autoCut
+from module.email_tools import EmailTools
 
 mcp = FastMCP("mcp_collection", port=8000)
+
+@mcp.tool()
+def get_last_email(imap_server: str, port: int, email_address: str, password: str, inbox: str, subject: str) -> str:
+    """
+    使用这个工具获取指定邮箱中最新的邮件内容
+    参数:
+        imap_server: IMAP服务器地址
+        port: IMAP服务器端口
+        email_address: 邮箱地址
+        password: 邮箱密码
+        inbox: 收件箱名称
+        subject: 邮件主题(可选,为空则获取最新邮件)
+    返回:
+        str: 邮件内容
+        如果没有找到匹配的邮件则返回空字符串
+    """
+    result = EmailTools.getLastEmail(imap_server, port, email_address, password, inbox, subject)
+    if result is None:
+        return ""  # 如果返回None则返回空字符串
+    return result
 
 @mcp.tool()
 def read_file(file_path: str) -> str:
