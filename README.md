@@ -13,7 +13,7 @@
 
 1. **克隆项目**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/943003797/mcp_collection.git
    cd mcp_collection
    ```
 
@@ -28,8 +28,6 @@
 3. **安装依赖**
    ```bash
    uv sync
-   # 或者
-   pip install -r requirements.txt
    ```
 
 4. **配置环境变量**
@@ -45,12 +43,12 @@
 
 5. **启动服务**
    ```bash
-   python main.py
+   uv run main.py
    ```
 
    服务将在 http://localhost:8000 启动，使用SSE（Server-Sent Events）传输协议。
 
-## 功能说明
+## 工具说明
 
 ### 📧 邮件处理工具
 
@@ -103,6 +101,7 @@
 
 #### `create_text_to_audio`
 将文本转换为音频文件。
+请在.env配置ALI_KEY
 
 | 参数 | 类型 | 说明 |
 |---|---|---|
@@ -131,14 +130,6 @@
 - **视频编辑**: pyJianYingDraft (剪映API)
 - **异步通信**: Server-Sent Events (SSE)
 
-### 📋 开发指南
-
-#### 添加新工具
-
-1. 在相应的模块文件中添加功能函数
-2. 在 `main.py` 中使用 `@mcp.tool()` 装饰器注册新工具
-3. 添加详细的docstring说明参数和返回值
-
 #### 测试工具
 
 可以使用任何MCP客户端测试工具功能，例如：
@@ -149,28 +140,6 @@ from mcp import Client
 client = Client("http://localhost:8000")
 result = client.call_tool("read_file", {"file_path": "/path/to/test.txt"})
 ```
-
-### 🔧 故障排除
-
-#### 常见问题
-
-1. **端口被占用**
-   - 检查8000端口是否被占用：`lsof -i :8000`
-   - 修改main.py中的端口配置
-
-2. **API密钥错误**
-   - 确认.env文件中ALI_KEY已正确配置
-   - 检查阿里云API密钥权限
-
-3. **邮件连接失败**
-   - 确认邮箱IMAP服务已开启
-   - 检查防火墙设置
-   - 验证邮箱账号密码正确性
-
-4. **视频编辑失败**
-   - 确认剪映草稿文件路径正确
-   - 检查必要的素材文件是否存在
-   - 验证pyJianYingDraft库安装正确
 
 ### 🤝 贡献指南
 
