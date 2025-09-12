@@ -4,7 +4,8 @@ from pyJianYingDraft import Intro_type, Transition_type, trange
 from pyJianYingDraft import TextIntro, TextOutro, Text_loop_anim, Mask_type
 from pyJianYingDraft import animation
 from pyJianYingDraft.script_file import json
-from pyJianYingDraft import ExportResolution, ExportFramerate
+from pyJianYingDraft.jianying_controller import ExportResolution, ExportFramerate
+
 
 class autoCut():
 
