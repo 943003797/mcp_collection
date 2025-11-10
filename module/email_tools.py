@@ -38,7 +38,7 @@ class EmailTools:
             
             # 选择收件箱
             mail.select(inbox)
-            
+            print(f"邮件主题");
             # 搜索所有邮件
             status, messages = mail.search(None, 'ALL')
             

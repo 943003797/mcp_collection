@@ -1,12 +1,26 @@
 from mcp.server.fastmcp import FastMCP
 from module.file_system import FileSystem
 from module.cosyvoice_v1 import Cosyvoice
-from module.auto_cut import autoCut
-from module.email_tools import EmailTools
+# from module.auto_cut import autoCut
+from module.git_tools import GitTools
 
 mcp = FastMCP("mcp_collection", port=8000)
 
 @mcp.tool()
+def get_git_diff(repository_path: str, file_path: str, commit_hash: str) -> str:
+    """
+    使用这个工具获取指定文件在指定commit中的diff内容
+    参数:
+        repository_path: git仓库路径
+        file_path: 文件路径
+        commit_hash: commit哈希值
+    """
+    git = GitTools(repository_path);
+    diff_result = git.get_diff(file_path, commit_hash)
+    # 如果返回的是字典，则转换为字符串
+    if isinstance(diff_result, dict):
+        return str(diff_result)
+    return diff_result
 def get_last_email(imap_server: str, port: int, email_address: str, password: str, inbox: str, subject: str) -> str:
     """
     使用这个工具获取指定邮箱中最新的邮件内容
