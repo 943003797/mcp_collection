@@ -3,10 +3,23 @@ from module.file_system import FileSystem
 from module.cosyvoice_v1 import Cosyvoice
 # from module.auto_cut import autoCut
 from module.git_tools import GitTools
+from module.dom_tools import DomTools
 
 mcp = FastMCP("mcp_collection", port=8000)
 
 @mcp.tool()
+def get_version_info(html: str, dateSelector: str, descSelector: str = None, versionSelector: str = None) -> str:
+    """
+    使用这个工具从HTML中提取文本
+    参数:
+        html: HTML内容
+        selector: CSS选择器
+    返回:
+        str: 提取的文本
+    """
+    dom = DomTools(html)
+    return dom.get_text(dateSelector, descSelector, versionSelector)
+
 def get_git_diff(repository_path: str, file_path: str, commit_hash: str) -> str:
     """
     使用这个工具获取指定文件在指定commit中的diff内容
