@@ -4,6 +4,7 @@ from module.cosyvoice_v1 import Cosyvoice
 # from module.auto_cut import autoCut
 from module.git_tools import GitTools
 from module.dom_tools import DomTools
+from module.github_tools import GitHubTools
 
 mcp = FastMCP("mcp_collection", port=8000)
 
@@ -116,6 +117,20 @@ def auto_cut(draft_path: str) -> str:
     ac = autoCut(draft_path, '浮光.mp3','水墨山河.mp4');
     ac.general_draft();
     return "Success"
+
+@mcp.tool()
+def get_github_repo_info(repo_url: str) -> str:
+    """
+    获取GitHub仓库的最新版本、更新日期和更新说明
+    参数:
+        repo_url: GitHub仓库URL
+    返回:
+        str: 包含仓库最新版本、更新日期和更新说明的JSON字符串
+    """
+    result = GitHubTools.get_github_repo_info(repo_url)
+    if result is None:
+        return "获取仓库信息失败"
+    return str(result)
 
 if __name__ == "__main__":
     mcp.run(transport='sse')

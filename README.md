@@ -41,7 +41,14 @@
 
    ```env
    ALI_KEY=your_alibaba_cloud_api_key
+   GITHUB_TOKEN=your_github_personal_access_token  # 可选，但推荐用于避免API速率限制
    ```
+   
+   **关于GITHUB_TOKEN**:
+   - GitHub API对未认证请求有速率限制（每小时60次请求）
+   - 设置GITHUB_TOKEN可以提高速率限制（每小时5000次请求）
+   - 要创建一个Personal Access Token，请访问: https://github.com/settings/tokens
+   - 选择 "Classic Personal Access Token" 并赋予 `public_repo` 权限（仅读取公共仓库权限）
 5. **启动服务**
 
    ```bash
@@ -118,6 +125,127 @@
 | `commit_hash`     | string | commit哈希值 |
 
 **返回：** diff内容字符串
+
+### 🔊 文本转语音工具
+
+---
+
+##### 🔈 `create_text_to_audio`
+
+将文本转换为音频文件。
+请在.env配置ALI_KEY
+
+| 参数         | 类型   | 说明             |
+| ------------ | ------ | ---------------- |
+| `text`     | string | 要转换的文本内容 |
+| `out_path` | string | 输出音频文件路径 |
+
+**返回：** "Success"（成功）或"Failed"（失败）
+
+### 🎬 自动视频编辑工具
+
+---
+
+##### 🎞️ `auto_cut`
+
+基于剪映草稿的自动视频编辑。
+
+| 参数           | 类型   | 说明             |
+| -------------- | ------ | ---------------- |
+| `draft_path` | string | 剪映草稿文件路径 |
+
+**返回：** "Success"（成功）
+
+### 🐙 GitHub工具
+
+---
+
+##### 📦 `get_github_repo_info`
+
+获取GitHub仓库的最新版本、更新日期和更新说明。
+
+| 参数        | 类型   | 说明         |
+| ----------- | ------ | ------------ |
+| `repo_url` | string | GitHub仓库URL |
+
+**返回：** 包含仓库最新版本、更新日期和更新说明的JSON字符串
+
+##### 📨 `get_last_email`
+
+获取指定邮箱中最新的邮件内容。
+
+| 参数              | 类型   | 说明                      |
+| ----------------- | ------ | ------------------------- |
+| `imap_server`   | string | IMAP服务器地址            |
+| `port`          | int    | IMAP服务器端口（993/143） |
+| `email_address` | string | 邮箱地址                  |
+| `password`      | string | 邮箱密码                  |
+| `inbox`         | string | 收件箱名称（"INBOX"）     |
+| `subject`       | string | 邮件主题关键词（可选）    |
+
+**返回：** 邮件内容字符串，未找到返回空字符串
+
+### 📁 文件系统工具
+
+---
+
+##### 📄 `read_file`
+
+读取指定文件的内容。
+
+| 参数          | 类型   | 说明     |
+| ------------- | ------ | -------- |
+| `file_path` | string | 文件路径 |
+
+**返回：** 文件内容字符串
+
+##### 📝 `write_file`
+
+将内容写入指定文件。
+
+| 参数          | 类型   | 说明         |
+| ------------- | ------ | ------------ |
+| `file_path` | string | 目标文件路径 |
+| `content`   | string | 要写入的内容 |
+
+**返回：** "success"（成功）或抛出异常
+
+##### 📂 `copy_dir`
+
+复制源目录到目标目录。
+
+| 参数          | 类型   | 说明         |
+| ------------- | ------ | ------------ |
+| `from_path` | string | 源目录路径   |
+| `to_path`   | string | 目标目录路径 |
+
+**返回：** "success"（成功）或抛出FileNotFoundError
+
+##### 🔄 `get_git_diff`
+
+获取指定文件在指定commit中的diff内容。
+
+| 参数                | 类型   | 说明         |
+| ------------------- | ------ | ------------ |
+| `repository_path` | string | git仓库路径  |
+| `file_path`       | string | 文件路径     |
+| `commit_hash`     | string | commit哈希值 |
+
+**返回：** diff内容字符串
+
+### 🐙 GitHub工具
+
+---
+
+##### 📦 `get_github_repo_info`
+
+获取GitHub仓库的最新版本、更新日期和更新说明。
+
+| 参数        | 类型   | 说明         |
+| ----------- | ------ | ------------ |
+| `repo_url` | string | GitHub仓库URL |
+
+**返回：** 包含仓库最新版本、更新日期和更新说明的JSON字符串
 
 ### 🔊 文本转语音工具
 
